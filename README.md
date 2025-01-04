@@ -1,4 +1,4 @@
-<center>
+<div align="center">
 
 # Cross-Device Acoustic Communication Python Implementation
 
@@ -6,7 +6,7 @@ Digital acoustic communication tools using QFSK and Convolutional Encode. 跨设
 
 English | [中文 (to be done)](/#)
 
-</center>
+</div>
 
 ## Introduction
 [Demo_video (to be add)](/#)
@@ -42,11 +42,17 @@ The modules of this project and their usage are:
 ## Installation
 1. Clone this repo
 2. Install the backend and frontend dependence. You need to have `Python` and `node.js` reday, then run:
+
 ```cd QFSK_communication```
+
 ```cd QFSK_backend```
+
 ```pip install requirements.txt```
+
 ```npm install```
+
 ```cd ../QFSK_frontend```
+
 ```npm install```
 
 > Note
