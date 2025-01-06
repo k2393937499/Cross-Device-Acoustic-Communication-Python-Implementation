@@ -9,7 +9,7 @@ from flask import jsonify
 root = 'wav'
 channels = 1  # sound channel
 sample_rate = 5000
-output_filename = "output.wav"
+output_filename = "send.wav"
 dtype = np.int16
 
 path = os.path.join(root, output_filename)

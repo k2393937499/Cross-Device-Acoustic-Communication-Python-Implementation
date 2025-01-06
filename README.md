@@ -4,25 +4,29 @@
 
 Digital acoustic communication tools using QFSK and Convolutional Encode. 跨设备声学通信。
 
-English | [中文 (to be done)](/#)
+English | [中文 (to be done)](docs/README-zh.md)
 
 </div>
 
 ## Introduction
 [Demo_video (to be add)](/#)
+
 This project enables cross-device acoustic communication by transmitting bitstreams through the air. The highlight are as follows:
 1. **Digital Transmit** : Information is converted into a bitstream and transmitted via a sine wave.
 2. **AI Support** : To transmit bitstream at low symbol rate, seppch2text and text2speech module are included.
-2. **BER Optimization** : To minize the bit error rate (BER). QFSK modulation and Convolutional Encode are used before transmit.
-3. **Web Supported** : To make it easier to get started, a web UI based `VUE.js` is added.
+3. **BER Optimization** : To minize the bit error rate (BER). QFSK modulation and Convolutional Encode are used before transmit.
+4. **Web Supported** : To make it easier to get started, a web UI based `VUE.js` is added.
 
 ## Project Structure
 ![Project Structure (to be add)](/#)
 
-Our project can transmit the origin acoustic wave or transmit the UTF-8 encoding of each character.
+This project can transmit the origin acoustic wave or transmit the UTF-16 encoding of each character.
+
 Transmission and reception are achieved through the speaker and microphone, these devices limit the symbol rate, for example, the time cost of transmiting a 1s original acoustic wave (16bit, 5000 sample rate and 200 symbol rate) is:
+
 $$0.05 \times (5000 / 2) * 16 = 2000s$$
-This is why we add AI Support, so that we can transmit the utf-8 encoding at much lower time cost.
+
+This is why we add AI Support, so that we can transmit the UTF-16 encoding at much lower time cost.
 
 The modules of this project and their usage are:
 1. **Record Module** : record the sound at 5000 sample rate.
@@ -35,9 +39,9 @@ The modules of this project and their usage are:
 | ‘10’ | 1000 |
 | ‘11’ | 500 |
 
-3. **Speech2Text and Text2Speech** : To decode the character speaker said using utf-8, we need recognize the speech first. Then encode the bitstream and play it. Whisper and ChatTTS is used in this module.
+3. **Speech2Text and Text2Speech** : To decode the character speaker said using UTF-16, we need recognize the speech first. Then encode the bitstream and play it. Whisper and ChatTTS is used in this module.
 
-4. **Convlutional Encode** : When encode the utf-8 bitstream, BER must be 0\%, so we add convlutional encode to correc error bits.
+4. **Convlutional Encode** : When encode the UTF-16 bitstream, BER must be 0\%, so we add convlutional encode to correc error bits.
 
 ## Installation
 1. Clone this repo
@@ -47,7 +51,7 @@ The modules of this project and their usage are:
 
 ```cd QFSK_backend```
 
-```pip install requirements.txt```
+```pip install -r requirements.txt```
 
 ```npm install```
 
@@ -70,10 +74,10 @@ About unit test:
 
 ## TODO
 - [x] Release code.
+- [x] Add Chinese README.
 - [ ] Desigin the webpage.
 - [ ] Add quantitative experiment.
 - [ ] Upload demo video.
-- [ ] Add Chinese README.
 
 ## Acknowledgements
 to be done.

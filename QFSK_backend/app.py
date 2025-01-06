@@ -110,10 +110,10 @@ def output():
 
     else:
         length = int(0.1 * sr) - 1
-        end = ((len(transmit)-start) // (31 * length)) * (31 * length)
+        end = ((len(transmit)-start) // (23 * length)) * (23 * length)
         transmit = transmit[start:start + end]
 
-        transmit = transmit.reshape((-1, 31, length))
+        transmit = transmit.reshape((-1, 23, length))
         de_message = qfsk_module.demodulation(transmit, 0.1, sr)
         de_message = conven.convolutional_decode(de_message)
         de_message = qfsk_module.bit2chinese(de_message)

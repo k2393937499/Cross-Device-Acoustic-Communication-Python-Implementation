@@ -163,8 +163,9 @@ class QFSK:
 	def chinese2bit(self, chinese_char: str):
 		bit = []
 		for char in chinese_char:
-			utf8_bytes = char.encode('utf-8')
-			binary_list = [bin(byte)[2:].zfill(8) for byte in utf8_bytes]
+			utf16_bytes = char.encode('utf-16')
+			utf16_bytes = utf16_bytes[2:]
+			binary_list = [bin(byte)[2:].zfill(8) for byte in utf16_bytes]
 			bit.append(''.join(binary_list))
 		return bit
 	
@@ -174,7 +175,7 @@ class QFSK:
 			bytes_list = [b[i:i+8] for i in range(0, len(b), 8)]
 			byte_values = [int(byte, 2) for byte in bytes_list]
 			try:
-				char = bytes(byte_values).decode('utf-8')
+				char = bytes(byte_values).decode('utf-16')
 				word.append(char)
 			except Exception as e:
 				print("missing 1 char")
