@@ -4,7 +4,7 @@
 
 Digital acoustic communication tools using QFSK and Convolutional Encode. 跨设备声学通信。
 
-English | [中文 (to be done)](docs/README-zh.md)
+English | [中文](docs/README-zh.md)
 
 </div>
 
