@@ -81,6 +81,3 @@ About unit test:
 
 ## Acknowledgements
 to be done.
-
-## Thanks to all the contributors
-[![contributors](https://contrib.rocks/image?repo=k2393937499/Cross-Device-Acoustic-Communication-Python-Implementation)](https://github.com/k2393937499/Cross-Device-Acoustic-Communication-Python-Implementation/graphs/contributors)
