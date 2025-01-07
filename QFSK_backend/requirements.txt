@@ -3,7 +3,7 @@ datasets==3.2.0
 Flask==3.1.0
 Flask_Cors==5.0.0
 matplotlib==3.10.0
-numpy==2.2.1
+numpy==1.26.4
 scikit_commpy==0.8.0
 scipy==1.15.0
 sounddevice==0.5.1
