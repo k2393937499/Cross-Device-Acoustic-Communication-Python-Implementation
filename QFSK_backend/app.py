@@ -36,7 +36,7 @@ def modulation_option():
 
 @app.route('/send', methods=['POST'])
 def send():
-    sr, message = wavfile.read('wav/send.wav')
+    sr, message = wavfile.read('wav/output.wav')
     print('sr', sr)
     if current_app.config['option'] == '8bit' or current_app.config['option'] == '16bit':
         if current_app.config['option'] == '8bit':
@@ -58,7 +58,7 @@ def send():
         sd.wait()
 
     else:
-        sr, message = wavfile.read('wav/send.wav')
+        sr, message = wavfile.read('wav/output.wav')
         text = sttool.speech2text(message, sr)
         bit = qfsk_module.chinese2bit(text)
         bit = conven.convolutional_encode(bit)
@@ -89,7 +89,7 @@ def output():
 
     if current_app.config['option'] == '8bit' or current_app.config['option'] == '16bit':
         length = int(0.05 * sr) - 1
-        end = ((len(transmit)-start) // (8 * length)) * (12 * length)
+        end = ((len(transmit)-start) // (8 * length)) * (8 * length)
         transmit = transmit[start:start + end]
 
         if current_app.config['option'] == '8bit':
@@ -116,14 +116,14 @@ def output():
         transmit = transmit.reshape((-1, 23, length))
         de_message = qfsk_module.demodulation(transmit, 0.1, sr)
         de_message = conven.convolutional_decode(de_message)
-        de_message = qfsk_module.bit2chinese(de_message)
+        de_message_char = qfsk_module.bit2chinese(de_message)
 
-        de_message = sttool.text2speech(de_message)
+        de_message = sttool.text2speech(de_message_char)
 
         sd.play(de_message, 24000)
         sd.wait()
 
-        response = {"status": "success", "status_code": 200, "data": "finished to output sound"}
+        response = {"status": "success", "status_code": 200, "data": de_message_char}
         return jsonify(response)
 
 if __name__ == '__main__':

@@ -80,7 +80,7 @@ if __name__ == "__main__":
     print("noise added bits:", noisy_encoded)
 
     # decoded
-    decoded = system.convolutional_decode(noisy_encoded, original_lengths)
+    decoded = system.convolutional_decode(noisy_encoded)
     decoded1 = np.array(np.array(list(map(int, decoded[0])), dtype=np.int8))
     print("decoded bits:", decoded)
 

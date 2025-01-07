@@ -1,36 +1,43 @@
 <template>
-  <div>
-    录音
+  <div class="m-3">
+    <p class="fs-3 fw-semibold">录音</p>
     <BFormSelect
         id="time"
         v-model="time_select"
         :options="[{text: 'Choose...', value: null}, 5, 10, 15, 20, 25, 1050]"
       />
     <p>选择录音时长以开始录制：{{ time_select }}</p>
-    <BButton id="time_btn" variant="primary" 
-      @click="record" :disabled="time_btn_disable">
-        {{ time_btn_text }}
-    </BButton>
+    <div class="d-grid gap-2">
+      <BButton id="time_btn" variant="primary" 
+        @click="record" :disabled="time_btn_disable">
+          {{ time_btn_text }}
+      </BButton>
+    </div>
   </div>
 
-  <div>
-    选择调制方式
+  <div class="m-3">
+    <p class="fs-3 fw-semibold">选择压缩方式</p>
     <BFormSelect
         id="modulation_option"
         v-model="modulation_select"
         :options="[{text: 'Choose...', value: null}, '8bit', '16bit', 'utf-8']"
       />
-    <p>当前调制比特数为：{{ modulation_text }}</p>
-    <BButton id="modulation_btn" variant="primary" @click="modulation">
-        设置
-    </BButton>
+    <p>当前压缩方式为：{{ modulation_text }}</p>
+    <div class="d-grid gap-2">
+      <BButton id="modulation_btn" variant="primary" @click="modulation">
+          设置
+      </BButton>
+      </div>
   </div>
 
-  <div>
-    解调信号
-    <BButton id="send_btn" variant="primary" @click="output">
-        解调
-    </BButton>
+  <div class="m-3">
+    <p class="fs-3 fw-semibold">解调信号</p>
+    <p>utf-8模式识别到的文字为：{{ text }}</p>
+    <div class="d-grid gap-2">
+      <BButton id="send_btn" variant="primary" @click="output">
+          解调
+      </BButton>
+    </div>
   </div>
 </template>
 
@@ -84,7 +91,7 @@ const modulation = () =>{
 
 const output = () => {
   if(modulation_text === null){
-    alert("请选择调制比特数")
+    alert("请选择压缩方式")
     return;
   }
   axios.post('http://127.0.0.1:5000/output')
