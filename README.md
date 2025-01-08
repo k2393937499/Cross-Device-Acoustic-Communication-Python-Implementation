@@ -10,7 +10,7 @@ English | [中文](docs/README-zh.md)
 
 ## Introduction
 
-You can check the demo video in `asset/demo.mp4`
+You can check the demo video on [Bilibili](https://www.bilibili.com/video/BV1vprYYaEXZ/)
 
 This project enables cross-device acoustic communication by transmitting bitstreams through the air. The highlight are as follows:
 1. **Digital Transmit** : Information is converted into a bitstream and transmitted via a sine wave.
