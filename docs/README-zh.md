@@ -9,16 +9,18 @@
 </div>
 
 ## 介绍
-[示例视频（待办）](/#)
+
+您可以在`asset/demo.mp4`中查看演示视频
 
 这个项目通过传播比特流，实现了跨设备的声学数字通信。项目有以下特点：
 1. **数字通信** ：信号被转化为比特流，调制后通过正弦波进行传输。
 2. **AI支持** ：由于扬声器支持的符号率较低，为了提高传输效率，添加了基于AI的语音文字相互转换模块。
 3. **误码率优化** ：为了减小误码率（BER），使用了QFSK调制和卷积编码。
-4. **网页支持** ：为了使项目易于体验，添加了基于`VUE.js`的前端交互。
+4. **网页支持** ：为了使项目易于体验，添加了基于`Vue.js`的前端交互。
 
 ## 项目结构
-![项目结构图（待办）](/#)
+
+![项目结构](../asset/Structure.png)
 
 项目可以传输原始的声波或汉字的二进制UTF-16编码。
 
@@ -56,16 +58,48 @@ $$0.05 \times (5000 / 2) * 16 = 2000s$$
 ## 快速开始
 1. 在 `QFSK_communication/QFSK_backend/` 路径下, 运行 `python app.py` 以启动后端。
 2. 在 `QFSK_communication/QFSK_frontend/` 路径下, 运行 `npm run dev` 以启动前端。
-3. 访问本地端口 `http://localhost:5123` 来尝试网页交互。
+3. 访问本地端口 `http://localhost:5173` 来尝试网页交互。
 
 关于单元测试：
 1. 您可以单独为每个模块运行单元测试，所有单元测试都保存在 `QFSK_backend/unit_test` 中。
 2. 运行 `*.py` 测试，在 `QFSK_communication/QFSK_backend/` 路径下, 运行 `python -m unit_test.modulation_utf`。
 3. 运行 `*.js` 测试，在 `QFSK_communication/QFSK_backend/` 路径下, 运行 `python app.py` ，接着运行 `node unit_test/record.js` 以查看结果。
 
+## 定量测试
+我们测试了在空气中传播的误码率如图，红色线表示添加了卷积编码，蓝色线未添加卷积编码。但由于实验限制，实验结果仅供参考。
+
+![BER at different distance](../asset/BER.jpg)
+
+我们还验证了算法在水下的表现，使用声呐进行收发，接收到的波形如下图，您可以运行`QFSK_backend/unit_test/sonar_test.py`来查看水池实验的结果。
+
 ## 待办
 - [x] 上传代码.
 - [x] 添加中文README.
-- [ ] Desigin the webpage.
-- [ ] Add quantitative experiment.
-- [ ] Upload demo video.
+- [x] Desigin the webpage.
+- [x] Add quantitative experiment.
+- [x] Upload demo video.
+
+## 致谢
+我们的项目参考了以下仓库：
+
+[Bootstrap](https://github.com/twbs/bootstrap)
+
+[BootstrapVueNext](https://github.com/bootstrap-vue-next/bootstrap-vue-next)
+
+[ChatTTS](https://github.com/2noise/ChatTTS)
+
+[Flask](https://github.com/pallets/flask)
+
+[QPSK-modulation-demodulation](https://github.com/nancyradadia/QPSK-modulation-demodulation)
+
+[Vue](https://github.com/vuejs/core)
+
+[Whisper](https://github.com/openai/whisper)
+
+感谢团队其他成员对项目的贡献：
+
+[BABALA-cpu](https://github.com/BABALA-cpu)
+
+[Thourey](https://github.com/Thourey)
+
+[yangchicken](https://github.com/yangchicken)

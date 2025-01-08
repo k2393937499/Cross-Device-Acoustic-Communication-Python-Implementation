@@ -38,7 +38,6 @@ class SpeechTextTool:
         self.ctts.load()
 
         self.params = ChatTTS.Chat.InferCodeParams(
-            spk_emb=torch.load('asset/seed_742.pt', map_location='cpu'),
             prompt='[speed_1]'
         )
 

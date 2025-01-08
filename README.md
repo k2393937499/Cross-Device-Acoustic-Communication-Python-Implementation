@@ -9,16 +9,18 @@ English | [中文](docs/README-zh.md)
 </div>
 
 ## Introduction
-[Demo_video (to be add)](/#)
+
+You can check the demo video in `asset/demo.mp4`
 
 This project enables cross-device acoustic communication by transmitting bitstreams through the air. The highlight are as follows:
 1. **Digital Transmit** : Information is converted into a bitstream and transmitted via a sine wave.
 2. **AI Support** : To transmit bitstream at low symbol rate, seppch2text and text2speech module are included.
 3. **BER Optimization** : To minize the bit error rate (BER). QFSK modulation and Convolutional Encode are used before transmit.
-4. **Web Supported** : To make it easier to get started, a web UI based `VUE.js` is added.
+4. **Web Supported** : To make it easier to get started, a web UI based `Vue.js` is added.
 
 ## Project Structure
-![Project Structure (to be add)](/#)
+
+![Project Structure](asset/Structure.png)
 
 This project can transmit the origin acoustic wave or transmit the UTF-16 encoding of each character.
 
@@ -72,12 +74,35 @@ About unit test:
 2. To run the `*.py` test, in `QFSK_communication/QFSK_backend/`, run `python -m unit_test.modulation_utf`
 3. To run the `*.js` test, in `QFSK_communication/QFSK_backend/`, run `python app.py`, then run `node unit_test/record.js` et al.
 
+## Quantitative Experiment
+We have test the BER in transmitting, the red line added convolutional encode and blue line did not. Due to the lack of experimental conditions, the results are for reference only.
+
+![BER at different distance](asset/BER.jpg)
+
+We also test our algorithm's underwater performence using sonar. The recieced wave like below, you can also check the code in `QFSK_backend/unit_test/sonar_test.py`
+
+![sonar resived](asset/sonar_rx.png)
+
 ## TODO
 - [x] Release code.
 - [x] Add Chinese README.
-- [ ] Desigin the webpage.
-- [ ] Add quantitative experiment.
-- [ ] Upload demo video.
+- [x] Desigin the webpage.
+- [x] Add quantitative experiment.
+- [x] Upload demo video.
 
 ## Acknowledgements
-to be done.
+All the repos we refered links below:
+
+[Bootstrap](https://github.com/twbs/bootstrap)
+
+[BootstrapVueNext](https://github.com/bootstrap-vue-next/bootstrap-vue-next)
+
+[ChatTTS](https://github.com/2noise/ChatTTS)
+
+[Flask](https://github.com/pallets/flask)
+
+[QPSK-modulation-demodulation](https://github.com/nancyradadia/QPSK-modulation-demodulation)
+
+[Vue](https://github.com/vuejs/core)
+
+[Whisper](https://github.com/openai/whisper)

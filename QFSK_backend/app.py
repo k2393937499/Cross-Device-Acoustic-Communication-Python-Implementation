@@ -1,3 +1,4 @@
+import re
 import numpy as np
 import sounddevice as sd
 from flask_cors import CORS
@@ -37,15 +38,14 @@ def modulation_option():
 @app.route('/send', methods=['POST'])
 def send():
     sr, message = wavfile.read('wav/output.wav')
-    print('sr', sr)
     if current_app.config['option'] == '8bit' or current_app.config['option'] == '16bit':
         if current_app.config['option'] == '8bit':
             message = (message / 256).astype(np.int8)
             bit = qfsk_module.wave2bit(message, bit_rate=8)
-            qfsk_wave = qfsk_module.modulation(bit, sr, tb=0.05, bit=8)
+            qfsk_wave = qfsk_module.modulation(bit, sr, tb=0.05)
         else:
             bit = qfsk_module.wave2bit(message, bit_rate=16)
-            qfsk_wave = qfsk_module.modulation(bit, sr, tb=0.05, bit=16)
+            qfsk_wave = qfsk_module.modulation(bit, sr, tb=0.05)
         
         qfsk_wave = qfsk_wave.reshape((-1, ))
 
@@ -117,6 +117,7 @@ def output():
         de_message = qfsk_module.demodulation(transmit, 0.1, sr)
         de_message = conven.convolutional_decode(de_message)
         de_message_char = qfsk_module.bit2chinese(de_message)
+        de_message_char = re.sub(r'㓇+$', '', de_message_char)
 
         de_message = sttool.text2speech(de_message_char)
 
